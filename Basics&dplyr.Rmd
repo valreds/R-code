@@ -1,0 +1,244 @@
+---
+title: "R Basics"
+output: html_notebook
+---
+
+### Data types
+```{r}
+
+```
+
+```{r}
+#character
+character<- "Valeria"
+class(character)
+#numeric
+number <- 3
+class(number)
+#logical
+binary <- TRUE
+class(binary)
+#NA
+class(NA)
+```
+
+
+### Vectors
+```{r}
+#Vectors are a list-like object in R
+months <- c("January", "February", "March")
+#Check data type
+class(months)
+#check data type
+typeof(months)
+
+```
+
+To access individual elements of a vector, we use []
+```{r}
+months[2]
+```
+
+Another vector example with numbers
+```{r}
+phone <- c(55,555,5679)
+phone
+```
+
+
+```{r}
+#Look for a specific value within phone, remember that we need to know the number elements within the vector
+#check length of a vector or object
+length(phone)
+```
+
+```{r}
+phone[3]
+```
+
+### Conditionals
+Syntax
+```{r}
+if (TRUE){
+  print('a new message')
+} else {
+    print('message two')
+  }
+```
+
+Using the conditional, example.
+```{r}
+message <- 'I change based on a condition.'
+if (TRUE) {
+   message <- 'I execute this when true!'
+} else {
+   message <- 'I execute this when false!'
+}
+message
+```
+
+```{r}
+message1 <- 
+if (TRUE) {
+   message1 <- 'I execute this when true!'
+} else {
+   message1 <- 'I execute this when false!'
+}
+message1
+```
+
+### Operators
+Less than: <
+Greater than: >
+Less than or equal to: <=
+Greater than or equal to: >=
+Is equal to: ==
+Is NOT equal to: !=
+
+```{r}
+#Check if 126 is greater than 2450
+126>2450
+#Check if 126 is not equal to 2450
+126!=126
+#Check if its equal
+126==126
+```
+
+#### Loogical operators
+the and operator (&)
+the or operator (|)
+the not operator, otherwise known as the bang operator (!)
+
+```{r}
+message <- 'Should I pack an umbrella?'
+weather <- 'cloudy'
+high_chance_of_rain <- TRUE
+
+
+if (weather == 'cloudy' & high_chance_of_rain ) {
+  message <- "Pack umbrella!"
+} else {
+  message <- "No need for umbrella!"
+}
+
+message
+```
+
+
+### Some basic functions
+c() combine
+```{r}
+#order elements
+sort(c(1,200,87,43,9541))
+# total count of elements
+length(c(1,200,87,43,9541))
+#sum of numbers
+sum(c(1,200,87,43,9541))
+# remove duplicates show the unique elements of a vector
+unique(c(1,2,4,5,6,77,88,1,2))
+#floor round down to the next integer
+round_down <- floor(3.14)
+#ceiling round up to the next integer
+round_up <- ceiling(3.14)
+round_down
+round_up
+```
+
+### Data Frames
+```{r}
+library(dplyr)
+```
+
+Some functions
+cols()check the name of the columns
+
+```{r}
+#create a data frame from scratch
+df <- data.frame("id" = 1:2, "Age" = c(21,15), "Name" = c("John", "Dora"), stringsAsFactors = FALSE)
+str(df)
+df
+#name of columns
+colnames(df)
+names(df)
+#number of cols
+ncol(df)
+#number of rows
+nrow(df)
+#length of the list same as ncol
+length(df)
+```
+
+#### Accessing data within the dataframe
+We can use:
+[] this search returns a data frame
+[[ this double bracket returns a vector
+$ returns a vector
+
+```{r}
+#look for id columns and show it as data frame
+df['id']
+```
+
+```{r}
+#while $ or [[]]  show as vector
+df$id
+df[['id']]
+```
+
+Another example
+```{r}
+#shows the list of available test datasets
+library(help = "datasets")
+
+str(trees)
+```
+
+```{r}
+#select rows and not columns
+trees[1:3, ]
+```
+```{r}
+#select from trees those species with height larger than 82
+trees[trees$Height>82,]
+```
+
+```{r}
+#select rows 10 to 12 and show only column 2 display result as data frame with drop false
+trees[10:12, 2, drop=FALSE]
+```
+
+#### Modify a dataframe
+Use base R to modify a single value from a dataframe
+```{r}
+df
+```
+
+
+```{r}
+#from dataframe row 1 column Age modify value to 29
+df[1,"Age"]<- 29
+df
+```
+
+#### Adding columns to a dataframe
+```{r}
+#Cbind adds a new column but save it as a new dataframe to see the new column
+cbind(df, Last_name=c("NY", "FL"))
+```
+
+```{r}
+#or use an easier method
+df$State <- c("NY", "FL"); df
+```
+
+### Dplyr for dataframe editing
+More functions with dplyr like piping %>%. This is useful to nest of link  multiple functions together.
+```{r}
+trees %>%
+  head()
+```
+
+select() function
+Use to select the columns that you need using %>%
+
+
