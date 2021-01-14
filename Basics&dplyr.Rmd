@@ -2,6 +2,10 @@
 title: "R Basics"
 output: html_notebook
 ---
+## Adding useful links for tutorials about dplyr
+https://appsilon.com/r-dplyr-tutorial/
+https://www.listendata.com/2016/08/dplyr-tutorial.html
+
 
 ### Data types
 ```{r}
@@ -232,7 +236,7 @@ df$State <- c("NY", "FL"); df
 ```
 
 ### Dplyr for dataframe editing
-More functions with dplyr like piping %>%. This is useful to nest of link  multiple functions together.
+More functions with dplyr like piping %>%. This is useful to nest of link multiple functions together.
 ```{r}
 trees %>%
   head()
