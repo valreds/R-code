@@ -6,6 +6,20 @@ output: html_notebook
 https://appsilon.com/r-dplyr-tutorial/
 https://www.listendata.com/2016/08/dplyr-tutorial.html
 
+## Markdown basics
+-bullets
+**bold**
+*italics*
+[links](www.github.com)
+run in line 'r code' 
+
+Ctrl + alt+ C = add new code chunk
+
+```{r}
+#installa r markdown
+#install.packages("rmarkdown")
+```
+
 
 ### Data types
 ```{r}
