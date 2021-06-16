@@ -1,0 +1,64 @@
+
+
+```{r}
+# install.packages('blscrapeR')
+#load/install packages
+library('blscrapeR')
+# bls_key = '2f07e9b2502f4b28b178b0c030fe1753'
+library('ggplot2')
+```
+
+```{r}
+# set_bls_key(key = '2f07e9b2502f4b28b178b0c030fe1753', o )
+# readRenviron('~/.Renviron')
+Sys.getenv('BLS_KEY')
+```
+
+```{r}
+prefix = 'LASST01'
+suffix = '0000000000003'
+numbers = 1
+toString(prefix + suffix)
+```
+
+
+```{r}
+# codes = []
+# prefix = 'LASST01'
+# suffix = '0000000000003'
+# for number in range(57):
+# 
+#     if number <=9:
+#         codes.append(prefix[:6]+str(number)+suffix)
+#     if number >=10:
+#         codes.append(prefix[:5]+str(number)+suffix)
+# print(codes[1])
+codes = list()
+for (i in 1:57){
+  if (i <= 9){
+    print('small')
+  } else {
+      print(i)
+  }
+}
+```
+
+```{r}
+#test 1 usn the BLS API to bring the data from a seriesID
+df_Alabama = bls_api('LASST060000000000003', startyear = "2018", endyear = '2021', registrationKey = 'BLS_KEY')
+df_Alabama
+#for multiple series, add them as bls_api(c())
+```
+```{r}
+# county_data_al = get_bls_state(state.name='Alabama')
+# county_data_al
+state_level_al = get_bls_county( stateName ='Alabama')
+state_level_al
+```
+
+
+```{r}
+plot_county_alabama = bls_map_county(map_data = county_data_al, fill_rate = 'labor_force', labtitle='Alabama counties labor froce', lowFill = 'Cyan', highFill = 'Red')
+plot_county_alabama
+```
+
